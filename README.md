@@ -1,19 +1,19 @@
 # Minimal API de Veículos
 
-API minimalista em **.NET 8 Minimal API** para gerenciamento de veículos com autenticação de administradores. Documentação interativa via **Swagger/OpenAPI**.
+API minimalista em **.NET 8 Minimal API** para gerenciamento de veículos com autenticação JWT e controle de acesso por perfil de administrador.  
+Documentação interativa disponível via **Swagger/OpenAPI**.
 
 ---
 
 ## Tecnologias Utilizadas
 
 - .NET 8 Minimal API  
-- Entity Framework Core  
-- MySQL  
+- Entity Framework Core (com MySQL)  
+- JWT (JSON Web Token) para autenticação  
 - Swagger/OpenAPI  
 - Dependency Injection  
-- DTOs para entrada de dados  
-
----
+- DTOs para entrada e saída de dados  
+- CORS habilitado 
 
 ## Endpoints
 
@@ -28,3 +28,9 @@ API minimalista em **.NET 8 Minimal API** para gerenciamento de veículos com au
 | DELETE | `/veiculos/{id}` | Remove veículo | – | 204 No Content / 404 Not Found |
 
 ---
+
+## Autenticação
+
+A API utiliza **JWT Bearer Token** para proteger os endpoints.  
+- Administradores devem autenticar-se via `/administradores/login` para obter o token.  
+- O token deve ser incluído no **header Authorization** em chamadas autenticadas
